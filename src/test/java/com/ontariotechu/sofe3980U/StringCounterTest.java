@@ -21,6 +21,7 @@ public class StringCounterTest {
 
     //==========================BLACK BOX============================//
 
+    
     //array
     @Test @Tag("blackbox") @Tag("array")
     public void arrayNoMatch()
@@ -72,19 +73,20 @@ public class StringCounterTest {
         String str = "";
         assertEquals( strcount.countOccurances(str, 'd'), 0);
     }
+    
 
     //==========================WHITE BOX============================//
 
     //array
     @ParameterizedTest @Tag("whitebox") @Tag("array")
-    @ValueSource(strings = {"bb", "b", "bx"})
+    @ValueSource(strings = {"", "bb", "bb", ""})
     public void arrayWBNoMatch(String s)
     {
         assertEquals( strcount.countOccurances( s.toCharArray(), 'a' ), 0 );
     }
 
     @ParameterizedTest @Tag("whitebox") @Tag("array")
-    @ValueSource(strings = {"a", "ab", "a", "ax"})
+    @ValueSource(strings = {"a", "ba", "a", "ab", "a"})
     public void arrayWBOneMatch(String s)
     {
         assertEquals( strcount.countOccurances( s.toCharArray(), 'a' ), 1 );
@@ -97,16 +99,17 @@ public class StringCounterTest {
         assertEquals( strcount.countOccurances( s.toCharArray(), 'a' ), 2 );
     }
 
+    
     //string
     @ParameterizedTest @Tag("whitebox") @Tag("array")
-    @ValueSource(strings = {"bb", "b", "bx"})
+    @ValueSource(strings = {"", "bb", "bb", ""})
     public void stringWBNoMatch(String s)
     {
         assertEquals( strcount.countOccurances( s, 'a' ), 0 );
     }
 
     @ParameterizedTest @Tag("whitebox") @Tag("array")
-    @ValueSource(strings = {"a", "ab", "a", "ax"})
+    @ValueSource(strings = {"a", "ba", "a", "ab", "a"})
     public void stringWBOneMatch(String s)
     {
         assertEquals( strcount.countOccurances( s, 'a' ), 1 );
@@ -118,5 +121,5 @@ public class StringCounterTest {
     {
         assertEquals( strcount.countOccurances( s, 'a' ), 2 );
     }
-
+    
 }
